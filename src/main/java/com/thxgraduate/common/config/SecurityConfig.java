@@ -47,7 +47,6 @@ public class SecurityConfig {
                         "/oauth/**",
                         "/login-success"
                 ).permitAll()
-                .requestMatchers("/api/v1/**").hasAnyRole("MEMBER", "ADMIN")
                 .anyRequest().authenticated();
     }
 }
