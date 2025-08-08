@@ -1,6 +1,5 @@
 package com.thxgraduate.post.controller;
 
-import com.thxgraduate.auth.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -8,14 +7,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.thxgraduate.post.controller.dto.PostRequest;
 import com.thxgraduate.post.controller.dto.PostResponse;
-import com.thxgraduate.post.entity.Post;
 import com.thxgraduate.post.service.PostService;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
