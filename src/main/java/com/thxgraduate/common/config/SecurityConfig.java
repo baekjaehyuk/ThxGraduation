@@ -34,10 +34,18 @@ public class SecurityConfig {
     private void configureAuthorization(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry auth) {
         auth
                 .requestMatchers(
-                        "/", "/swagger-ui/**","/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                        "/api-docs/swagger-config",
+                        "/api/v1/signin",
+                        "/api/v1/signup",
+                        "/api/v1/password",
+                        "/api/v1/mail/**",
+                        "/api/v1/register",
+                        "/api/v1/academy/create",
+                        "/api/v1/academy/invite",
                         "/oauth/**",
-                        "/login-success",
-                        "/api/v1/**"
+                        "/login-success"
                 ).permitAll()
                 .anyRequest().authenticated();
     }
