@@ -8,12 +8,12 @@ import lombok.Builder;
 public record PostResponse(
         String nickName,
         String text,
-        Character character,
+        CharacterType characterType,
         LocalDateTime createAt
 ) {
     public static PostResponse from(Post post) {
         return PostResponse.builder()
-                .character(post.getCharacterType())
+                .characterType(post.getCharacterType())
                 .nickName(post.getNickName())
                 .text(post.getText())
                 .createAt(post.getCreatedAt())
