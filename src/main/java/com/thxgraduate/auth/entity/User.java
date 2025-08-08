@@ -1,4 +1,4 @@
-package com.thxgraduate.user.entity;
+package com.thxgraduate.auth.entity;
 
 import com.thxgraduate.common.BaseEntity;
 import jakarta.persistence.Column;

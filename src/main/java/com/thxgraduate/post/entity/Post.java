@@ -1,8 +1,7 @@
 package com.thxgraduate.post.entity;
 
 import com.thxgraduate.common.BaseEntity;
-import com.thxgraduate.post.controller.dto.PostRequest;
-import com.thxgraduate.user.entity.User;
+import com.thxgraduate.auth.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

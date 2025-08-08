@@ -1,7 +1,7 @@
 package com.thxgraduate.post.controller.dto;
 
 import com.thxgraduate.post.entity.Post;
-import com.thxgraduate.user.entity.User;
+import com.thxgraduate.auth.entity.User;
 import jakarta.validation.constraints.Size;
 
 public record PostRequest (

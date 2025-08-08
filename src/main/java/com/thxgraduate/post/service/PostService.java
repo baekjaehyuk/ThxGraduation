@@ -1,12 +1,11 @@
 package com.thxgraduate.post.service;
 
+import com.thxgraduate.auth.repository.UserRepository;
 import com.thxgraduate.post.controller.dto.PostRequest;
 import com.thxgraduate.post.entity.Post;
 import com.thxgraduate.post.repository.PostRepository;
-import com.thxgraduate.user.entity.User;
-import com.thxgraduate.user.repository.UserRepository;
+import com.thxgraduate.auth.entity.User;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,6 @@ import com.thxgraduate.post.controller.dto.PostRequest;
 import com.thxgraduate.post.controller.dto.PostResponse;
 import com.thxgraduate.post.entity.Post;
 import com.thxgraduate.post.service.PostService;
-import com.thxgraduate.user.repository.UserRepository;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
