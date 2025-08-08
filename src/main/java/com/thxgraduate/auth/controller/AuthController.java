@@ -1,4 +1,8 @@
+
 package com.thxgraduate.auth.controller;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.thxgraduate.auth.controller.dto.AccessTokenResponse;
 import com.thxgraduate.auth.controller.dto.KakaoUserInfoDto;
@@ -20,12 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/oauth")
+@Tag(name = "Auth", description = "OAuth 인증 관련 API")
 public class AuthController {
 
     private final KakaoOAuthService kakaoOAuthService;
     private final AuthService authService;
 
     @GetMapping("/kakao/callback")
+    @Operation(summary = "카카오 로그인 콜백", description = "카카오 로그인 후 AccessToken과 RefreshToken 발급")
     public ResponseEntity<AccessTokenResponse> kakaoLogin(@RequestParam String code, HttpServletResponse response) {
         String kakaoToken = kakaoOAuthService.getAccessToken(code);
         KakaoUserInfoDto kakaoUser = kakaoOAuthService.getUserInfo(kakaoToken);
