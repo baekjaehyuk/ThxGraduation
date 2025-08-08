@@ -9,11 +9,14 @@ public record PostRequest (
         String nickName,
 
         @Size(min = 2, message = "내용은 최소 2글자 이상이어야 합니다.")
-        String text
+        String text,
+
+        Character character
 ) {
-    public Post toEntity(User user, String nickName, String text) {
+    public Post toEntity(User user, String nickName, String text, Character character) {
         return Post.builder()
                 .user(user)
+                .character(character)
                 .nickName(nickName)
                 .text(text)
                 .build();
