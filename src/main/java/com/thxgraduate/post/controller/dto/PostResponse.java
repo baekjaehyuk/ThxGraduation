@@ -13,7 +13,7 @@ public record PostResponse(
 ) {
     public static PostResponse from(Post post) {
         return PostResponse.builder()
-                .character(post.getCharacter())
+                .character(post.getCharacterType())
                 .nickName(post.getNickName())
                 .text(post.getText())
                 .createAt(post.getCreatedAt())

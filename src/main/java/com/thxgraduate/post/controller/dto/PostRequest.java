@@ -16,7 +16,7 @@ public record PostRequest (
     public Post toEntity(User user, String nickName, String text, Character character) {
         return Post.builder()
                 .user(user)
-                .character(character)
+                .characterType(character)
                 .nickName(nickName)
                 .text(text)
                 .build();
