@@ -33,8 +33,8 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "character", nullable = false)
-    private Character character;
+    @Column(name = "character_type", nullable = false)
+    private Character characterType;
 
     @Column(name = "nick_name", nullable = false)
     private String nickName;
