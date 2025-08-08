@@ -25,7 +25,8 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public List<PostResponse> get(UUID link) {
-        User user = userRepository.findByLink(link);
+        User user = userRepository.findByLink(link)
+                .orElseThrow(() -> new RuntimeException("User not found"));
         return postRepository.findAllByUserId(user.getId())
                 .stream()
                 .map(post -> {
@@ -37,7 +38,8 @@ public class PostService {
 
     @Transactional
     public void register(UUID link,PostRequest request) {
-        User user = userRepository.findByLink(link);
+        User user = userRepository.findByLink(link)
+                .orElseThrow(() -> new RuntimeException("User not found"));
         Post post = request.toEntity(user, request.name(), request.message(), request.characterType());
         postRepository.save(post);
     }
