@@ -1,0 +1,21 @@
+
+services:
+  backend:
+    container_name: thxgraduation-backend
+    image: "${DOCKER_USERNAME}/thxgraduation-backend-app:latest"
+    restart: always
+    env_file:
+      - .env  # 환경 변수 관리 (DB 정보, JWT 등)
+    volumes:
+      - logs:/app/logs  # 로그 데이터 유지
+    networks:
+      - thxgraduation_network
+    ports:
+      - "8081:8080"
+
+volumes:
+  logs:  # 로그 볼륨 추가
+
+networks:
+  thxgraduation_network:
+    driver: bridge
