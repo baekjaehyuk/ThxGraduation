@@ -3,7 +3,7 @@ package com.thxgraduate.post.controller.dto;
 import lombok.Getter;
 
 @Getter
-public enum Character {
+public enum CharacterType {
     BUSINESS("정장 캐릭터"),
     CASUAL("일상복 캐릭터"),
     STUDENT("공부하는 캐릭터"),
@@ -15,7 +15,7 @@ public enum Character {
 
     private final String description;
 
-    Character(String description) {
+    CharacterType(String description) {
         this.description = description;
     }
 }

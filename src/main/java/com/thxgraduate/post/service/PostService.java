@@ -27,7 +27,7 @@ public class PostService {
     @Transactional
     public void register(UUID link,PostRequest request) {
         User user = userRepository.findByLink(link);
-        Post post = request.toEntity(user, request.nickName(), request.text(), request.character());
+        Post post = request.toEntity(user, request.nickName(), request.text(), request.characterType());
         postRepository.save(post);
     }
 }

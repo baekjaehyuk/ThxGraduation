@@ -2,7 +2,7 @@ package com.thxgraduate.post.entity;
 
 import com.thxgraduate.common.BaseEntity;
 import com.thxgraduate.auth.entity.User;
-import com.thxgraduate.post.controller.dto.Character;
+import com.thxgraduate.post.controller.dto.CharacterType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,8 +33,8 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "character", nullable = false)
-    private Character character;
+    @Column(name = "character_type", nullable = false)
+    private CharacterType characterType;
 
     @Column(name = "nick_name", nullable = false)
     private String nickName;
