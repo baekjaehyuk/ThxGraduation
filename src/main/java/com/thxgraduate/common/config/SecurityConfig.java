@@ -34,7 +34,7 @@ public class SecurityConfig {
     private void configureAuthorization(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry auth) {
         auth
                 .requestMatchers(
-                        "/swagger-ui/**",
+                        "/", "/swagger-ui/**","/v3/api-docs/**",
                         "/oauth/**",
                         "/login-success",
                         "/api/v1/**"
