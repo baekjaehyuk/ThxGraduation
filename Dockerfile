@@ -1,5 +1,5 @@
 # 1. JDK 17 이미지 사용
-FROM openjdk:17-jdk-alpine
+FROM openjdk:21-jdk-alpine
 
 # 2. JAR 파일 복사
 ARG JAR_FILE=build/libs/*.jar
