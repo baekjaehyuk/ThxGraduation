@@ -29,7 +29,7 @@ public class PostService {
         return postRepository.findAllByUserId(user.getId())
                 .stream()
                 .map(post -> {
-                    String message = isAuthenticated() || post.getRevealedMessage() ? post.getMessage() : null;
+                    String message = isAuthenticated() && post.getRevealedMessage() ? post.getMessage() : null;
                     return PostResponse.from(post, message);
                 })
                 .collect(Collectors.toList());
