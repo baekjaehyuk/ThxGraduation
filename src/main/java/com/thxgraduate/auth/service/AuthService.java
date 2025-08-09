@@ -36,4 +36,10 @@ public class AuthService {
         refreshTokenRepository.save(user.getId().toString(), refresh);
         return new TokenPair(access, refresh);
     }
+
+    @Transactional(readOnly = true)
+    public User getById(long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+    }
 }

@@ -67,7 +67,7 @@ public class AuthController {
         response.addHeader(HttpHeaders.SET_COOKIE, linkCookie.toString());
 
         return ResponseEntity.status(302)
-                .header(HttpHeaders.LOCATION, "http://localhost:5174/" + user.getLink())
+                .header(HttpHeaders.LOCATION, "https://localhost:5174/" + user.getLink())
                 .build();
     }
 }

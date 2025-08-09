@@ -43,7 +43,8 @@ public class SecurityConfig {
                                 // 성공/실패 리디렉트 페이지 쓰면 공개
                                 "/login-success",
                                 "/login-failure",
-                                "/api/v1/post/{link}"
+                                "/auth/token/refresh",
+                                "/api/v1/post/{link}
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
