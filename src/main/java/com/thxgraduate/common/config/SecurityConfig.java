@@ -44,7 +44,7 @@ public class SecurityConfig {
                                 "/login-success",
                                 "/login-failure",
                                 "/auth/token/refresh",
-                                "/api/v1/post/{link}
+                                "/api/v1/post/{link}"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
