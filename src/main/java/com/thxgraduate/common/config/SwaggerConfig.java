@@ -1,4 +1,4 @@
-package com.thxgraduate.core;
+package com.thxgraduate.common.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

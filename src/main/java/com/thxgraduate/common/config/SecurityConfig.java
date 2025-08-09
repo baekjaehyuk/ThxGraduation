@@ -43,12 +43,12 @@ public class SecurityConfig {
                                 // 성공/실패 리디렉트 페이지 쓰면 공개
                                 "/login-success",
                                 "/login-failure",
-                                "/auth/token/refresh"
+                                "/auth/token/refresh",
+                                "/api/v1/post/{link}
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
 
-        // JWT 인증 필터 등록 (UsernamePasswordAuthenticationFilter 전에)
         http.addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
