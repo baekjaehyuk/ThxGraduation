@@ -30,7 +30,6 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                // JWT 사용이므로 무상태
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
@@ -43,7 +42,8 @@ public class SecurityConfig {
                                 "/oauth/**",
                                 // 성공/실패 리디렉트 페이지 쓰면 공개
                                 "/login-success",
-                                "/login-failure"
+                                "/login-failure",
+                                "/auth/token/refresh"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );

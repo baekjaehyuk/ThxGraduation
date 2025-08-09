@@ -82,6 +82,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                 || uri.startsWith("/api-docs")
                 || uri.startsWith("/oauth")              // 카카오 로그인/콜백
                 || uri.equals("/login-success")
-                || uri.equals("/login-failure");
+                || uri.equals("/login-failure")
+                || uri.equals("/auth/token/refresh");
     }
 }
