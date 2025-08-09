@@ -7,12 +7,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.thxgraduate.post.controller.dto.PostRequest;
 import com.thxgraduate.post.controller.dto.PostResponse;
-import com.thxgraduate.post.entity.Post;
 import com.thxgraduate.post.service.PostService;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "게시글 API", description = "게시글 등록 및 조회 API")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/post")
 public class PostController {
 
     private final PostService postService;
@@ -40,7 +38,8 @@ public class PostController {
     )
     @PostMapping("/{link}")
     public void register(
-        @Parameter(description = "링크 UUID", required = true) @PathVariable UUID link,
+        @Parameter(description = "링크 UUID", required = true)
+        @PathVariable(value = "link") UUID link,
         @Valid @RequestBody PostRequest request
     ) {
         postService.register(link, request);
@@ -57,11 +56,8 @@ public class PostController {
     )
     @GetMapping("/{link}")
     public List<PostResponse> get(
-        @Parameter(description = "링크 UUID", required = true) @PathVariable UUID link
+        @Parameter(description = "링크 UUID", required = true) @PathVariable(value = "link") UUID link
     ) {
-        List<Post> posts = postService.get(link);
-        return posts.stream()
-                .map(PostResponse::from)
-                .collect(Collectors.toList());
+        return postService.get(link);
     }
 }

@@ -13,11 +13,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Entity
 @Getter
@@ -39,9 +42,16 @@ public class Post extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CharacterType characterType;
 
-    @Column(name = "nick_name", nullable = false)
-    private String nickName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "text", nullable = false)
-    private String text;
+    @Column(name = "message", nullable = false)
+    private String message;
+
+    public boolean getRevealedMessage() {
+        if(LocalDateTime.now().isBefore(LocalDateTime.of(2025, 8, 22, 0, 0))) {
+            return false;
+        }
+        return true;
+    }
 }
