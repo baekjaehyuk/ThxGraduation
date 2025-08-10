@@ -6,13 +6,15 @@ import lombok.Builder;
 
 @Builder
 public record PostResponse(
+        String owner,
         String name,
         String message,
         CharacterType characterType,
         LocalDateTime createAt
 ) {
-    public static PostResponse from(Post post, String message) {
+    public static PostResponse of(Post post, String message, String owner) {
         return PostResponse.builder()
+                .owner(owner)
                 .characterType(post.getCharacterType())
                 .name(post.getName())
                 .message(message)

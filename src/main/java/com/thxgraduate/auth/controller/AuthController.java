@@ -54,11 +54,9 @@ public class AuthController {
                 .maxAge(Duration.ofMinutes(30))
                 .build();
 
-
-
         response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
         response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
 
-        return ResponseEntity.ok(new AccessTokenResponse(user.getLink().toString()));
+        return ResponseEntity.ok(new AccessTokenResponse(user.getLink().toString(), user.getNickName()));
     }
 }

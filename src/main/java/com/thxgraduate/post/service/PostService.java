@@ -31,7 +31,7 @@ public class PostService {
                 .stream()
                 .map(post -> {
                     String message = isAuthenticated() && post.getRevealedMessage() ? post.getMessage() : null;
-                    return PostResponse.from(post, message);
+                    return PostResponse.of(post, message, user.getNickName());
                 })
                 .collect(Collectors.toList());
     }
