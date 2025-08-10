@@ -49,6 +49,9 @@ public class Post extends BaseEntity {
     private String message;
 
     public boolean getRevealedMessage() {
-        return !LocalDateTime.now().isBefore(LocalDateTime.of(2025, 8, 11, 2, 5));
+        if(LocalDateTime.now().isBefore(LocalDateTime.of(2025, 8, 22, 0, 0))) {
+            return false;
+        }
+        return true;
     }
 }
