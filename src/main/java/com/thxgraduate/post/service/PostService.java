@@ -53,6 +53,6 @@ public class PostService {
         if (authentication == null || !authentication.isAuthenticated() || authentication instanceof AnonymousAuthenticationToken) {
             return false;
         }
-        return id.toString().equals(authentication.getCredentials());
+        return id.toString().equals(authentication.getPrincipal());
     }
 }
