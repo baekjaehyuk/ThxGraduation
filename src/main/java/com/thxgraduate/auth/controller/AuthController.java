@@ -1,4 +1,3 @@
-
 package com.thxgraduate.auth.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -66,8 +65,6 @@ public class AuthController {
         response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
         response.addHeader(HttpHeaders.SET_COOKIE, linkCookie.toString());
 
-        return ResponseEntity.status(302)
-                .header(HttpHeaders.LOCATION, "https://localhost:5174/" + user.getLink())
-                .build();
+        return ResponseEntity.ok().build();
     }
 }
