@@ -30,7 +30,7 @@ public class PostService {
         List<PostDetailResponse> postDetails = postRepository.findAllByUserId(user.getId())
                 .stream()
                 .map(post -> {
-                    String message = isAuthenticated() && post.getRevealedMessage()
+                    String message = isAuthenticated(user.getId()) && post.getRevealedMessage()
                             ? post.getMessage()
                             : null;
                     return PostDetailResponse.of(post, message);
@@ -48,10 +48,11 @@ public class PostService {
         postRepository.save(post);
     }
 
-    private boolean isAuthenticated() {
+    private boolean isAuthenticated(Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication != null
-                && authentication.isAuthenticated()
-                && !(authentication instanceof AnonymousAuthenticationToken);
+        if (authentication == null || !authentication.isAuthenticated() || authentication instanceof AnonymousAuthenticationToken) {
+            return false;
+        }
+        return id.toString().equals(authentication.getCredentials());
     }
 }
