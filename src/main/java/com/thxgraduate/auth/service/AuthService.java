@@ -34,7 +34,7 @@ public class AuthService {
         String access = jwtProvider.createAccessToken(user.getId().toString());
         String refresh = jwtProvider.createRefreshToken(user.getId().toString());
         refreshTokenRepository.save(user.getId().toString(), refresh);
-        return new TokenPair(access, refresh);
+        return new TokenPair(user.getNickName(), access, refresh);
     }
 
     @Transactional(readOnly = true)

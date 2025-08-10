@@ -1,11 +1,14 @@
 package com.thxgraduate.post.service;
 
 import com.thxgraduate.auth.repository.UserRepository;
+import com.thxgraduate.post.controller.dto.PostListResponse;
+import com.thxgraduate.post.controller.dto.PostListResponse.PostDetailResponse;
 import com.thxgraduate.post.controller.dto.PostRequest;
 import com.thxgraduate.post.controller.dto.PostResponse;
 import com.thxgraduate.post.entity.Post;
 import com.thxgraduate.post.repository.PostRepository;
 import com.thxgraduate.auth.entity.User;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -24,16 +27,20 @@ public class PostService {
     private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
-    public List<PostResponse> get(UUID link) {
+    public PostListResponse get(UUID link) {
         User user = userRepository.findByLink(link)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        return postRepository.findAllByUserId(user.getId())
+        List<PostDetailResponse> postDetails = postRepository.findAllByUserId(user.getId())
                 .stream()
                 .map(post -> {
-                    String message = isAuthenticated() && post.getRevealedMessage() ? post.getMessage() : null;
-                    return PostResponse.of(post, message, user.getNickName());
+                    String message = isAuthenticated() && post.getRevealedMessage()
+                            ? post.getMessage()
+                            : null;
+                    return PostDetailResponse.of(post, message);
                 })
-                .collect(Collectors.toList());
+                .toList();
+
+        return PostListResponse.of(user.getNickName(), postDetails);
     }
 
     @Transactional

@@ -1,15 +1,14 @@
 package com.thxgraduate.post.controller;
 
+import com.thxgraduate.post.controller.dto.PostListResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.thxgraduate.post.controller.dto.PostRequest;
-import com.thxgraduate.post.controller.dto.PostResponse;
 import com.thxgraduate.post.service.PostService;
 import jakarta.validation.Valid;
-import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +54,7 @@ public class PostController {
         }
     )
     @GetMapping("/{link}")
-    public List<PostResponse> get(
+    public PostListResponse get(
         @Parameter(description = "링크 UUID", required = true) @PathVariable(value = "link") UUID link
     ) {
         return postService.get(link);
