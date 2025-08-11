@@ -10,11 +10,13 @@ import com.thxgraduate.auth.entity.User;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 @RequiredArgsConstructor
 @Service
@@ -26,7 +28,7 @@ public class PostService {
     @Transactional(readOnly = true)
     public PostListResponse get(UUID link) {
         User user = userRepository.findByLink(link)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         List<PostDetailResponse> postDetails = postRepository.findAllByUserId(user.getId())
                 .stream()
                 .map(post -> {
