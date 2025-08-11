@@ -33,18 +33,16 @@ public class SecurityConfig {
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                // Swagger
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/api-docs",
                                 "/api-docs/swagger-config",
-                                // OAuth 시작/콜백은 공개
                                 "/oauth/**",
-                                // 성공/실패 리디렉트 페이지 쓰면 공개
                                 "/login-success",
                                 "/login-failure",
                                 "/auth/token/refresh",
-                                "/api/v1/post/{link}"
+                                "/api/v1/post/{link}",
+                                "/error"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
